@@ -1,9 +1,24 @@
 var play = {
     create: function() {
-        this.sky = game.add.sprite(0, 0, 'sky');
-        this.skymirror = game.add.sprite(1600, 0, 'sky');
-        this.sky.scale.y = 2;
-        this.skymirror.scale.y = 2
+
+        this.background_type = Math.floor((Math.random() * 2) + 1);
+        console.log(this.background_type);
+
+        if (this.background_type == 1) {
+            this.offset = 1600;
+            this.sky = game.add.sprite(0, 0, 'sky');
+            this.skymirror = game.add.sprite(1600, 0, 'sky');
+            this.sky.scale.y = 2;
+            this.skymirror.scale.y = 2
+        } else {
+            this.offset = 1920;
+            this.sky = game.add.sprite(0, 0, 'sky2');
+            this.skymirror = game.add.sprite(1920, 0, 'sky2');
+            this.sky.scale.y = 1.1
+            this.skymirror.scale.y = 1.1
+        }
+
+
         //this.nisse = this.game.add.audio('nisse');
         //this.nisse.volume = 1.5;
         //this.nisse.play()
@@ -108,21 +123,21 @@ var play = {
 
     },
     update: function() {
-        if (this.player.angle < 20) this.player.angle += 1;
+        this.player.angle += 1;
         game.input.onDown.add(this.jump, this);
         this.space.onDown.add(this.jump, this);
         if (this.player.inWorld == false) this.restart();
         game.physics.arcade.collide(this.player, this.william, 0, this.restart, this);
         game.physics.arcade.collide(this.player, this.william2, 0, this.restart, this);
 
-      if (this.sky.x < -1600) {
-        this.sky.x = 1600;
+      if (this.sky.x < -this.offset) {
+        this.sky.x = this.offset;
         this.sky.x -= this.backgroundSpeed;
       } else {}
         this.sky.x -= this.backgroundSpeed;
 
-      if (this.skymirror.x < -1600) {
-        this.skymirror.x = 1600;
+      if (this.skymirror.x < -this.offset) {
+        this.skymirror.x = this.offset;
         this.skymirror.x -= this.backgroundSpeed;
       } else {}
         this.skymirror.x -= this.backgroundSpeed;
@@ -143,11 +158,16 @@ var play = {
         this.player.animations.play("jump1");
         }
 
-        this.player.body.velocity.y = -600;
+        if (this.score < 2)
+            this.player.body.velocity.y = -1000;
+        else
+            this.player.body.velocity.y = -600;
+
+
         tweenz = this.game.add.tween(this.player);
         tweenz.to({
-            angle: -20
-        }, 100);
+            angle: -500
+        }, 300);
         tweenz.start();
 
     },

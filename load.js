@@ -20,6 +20,7 @@ var load = {
         this.loadingtext.fontSize = "80px";
 
         game.load.image('sky', 'assets/oslo.png');
+        game.load.image('sky2', 'assets/bg2.png');
 
         game.load.image('william', 'assets/william.png');
         game.load.image('william2', 'assets/william2.png');
