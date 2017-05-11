@@ -68,10 +68,8 @@ var play = {
             this.m12.volume = 0.8;
             this.m13.volume = 1.0;
 
-            this.d1 = this.game.add.audio("dutrengerpikknoora")
-            this.d2 = this.game.add.audio("erduserr")
-            this.d3 = this.game.add.audio("omg")
-            this.d4 = this.game.add.audio("nooramedtooer")
+            this.d3 = this.game.add.audio("death1")
+            this.d3.volume = 0.5;
 
         }
 
@@ -129,6 +127,8 @@ var play = {
       } else {}
         this.skymirror.x -= this.backgroundSpeed;
 
+        if(!this.dick.isPlaying && this.shouldplaymusic){    this.dick.play();  }
+
     },
     render: function() {
         game.debug.body(this.william)
@@ -153,7 +153,9 @@ var play = {
     },
     restart: function() {
 
+        this.shouldplaymusic = false;
         this.dick.stop();
+
 
         TOTAL += this.score;
 
@@ -167,7 +169,7 @@ var play = {
         LAST = this.score;
 
         if (SOUND) {
-            this.randomDeathSound();
+            this.d3.play();
         }
 
         game.state.start('menu');
@@ -203,7 +205,7 @@ var play = {
                 this.d3.play();
                 break;
             case 4:
-                this.d4.play();
+                this.d3.play();
                 break;
         }
     },

@@ -75,6 +75,7 @@ var menu = {
     },
 
     play_game: function() {
+        this.shouldplaymusic = true;
         this.game.state.start('play');
     },
 

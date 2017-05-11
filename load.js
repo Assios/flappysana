@@ -38,10 +38,9 @@ var load = {
         game.load.audio("lagenoaent", "assets/quotes/lagenoaent.mp3")
         game.load.audio("ikkenoespise", "assets/quotes/ikkenoespise.mp3")
 
-        game.load.audio("dutrengerpikknoora", "assets/quotes/dutrengerpikknoora.mp3")
         game.load.audio("erduserr", "assets/erduserr.mp3")
         game.load.audio("omg", "assets/omg.mp3")
-        game.load.audio("nooramedtooer", "assets/nooramedtooer.mp3")
+        game.load.audio("death1", "assets/death1.mp3")
 
         game.load.audio('m2', 'assets/quotes/s2.mp3');
         game.load.audio('m3', 'assets/quotes/s3.mp3');
@@ -49,8 +48,7 @@ var load = {
         game.load.audio('m5', 'assets/quotes/s5.mp3');
 
 
-        game.load.audio("dick", "assets/dick.mp3");
-        game.load.audio("freaky", "assets/freaky.mp3")
+        game.load.audio("dick", "assets/fyfaen.mp3");
 
 	},
 
