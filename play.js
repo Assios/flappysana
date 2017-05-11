@@ -148,7 +148,15 @@ var play = {
     render: function() {
         game.debug.body(this.william)
     },
+
+
+    getRandomInt: function(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    },
+
     jump: function() {
+        this.random_spin = this.getRandomInt(1, 2);
+        this.random_time = this.getRandomInt(300, 800);
         //var change_expression = Math.floor(Math.random() * 20);
 
         this.backgroundSpeed += 0.03;
@@ -165,9 +173,23 @@ var play = {
 
 
         tweenz = this.game.add.tween(this.player);
-        tweenz.to({
-            angle: -500
-        }, 300);
+
+        if (this.score > 2 && this.score < 10) {
+            tweenz.to({
+                angle: -20
+            }, 100);
+        } else {
+            if (this.random_spin == 1) {
+                tweenz.to({
+                    angle: -500
+                }, 300);
+            } else {
+                tweenz.to({
+                    angle: 500
+                }, 300);
+            }
+        }
+
         tweenz.start();
 
     },
