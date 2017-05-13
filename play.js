@@ -1,6 +1,6 @@
 var play = {
     create: function() {
-
+        this.spin_direction = 500;
         this.background_type = Math.floor((Math.random() * 2) + 1);
         console.log(this.background_type);
 
@@ -50,7 +50,6 @@ var play = {
 
         if (SOUND) {
             this.dick = this.game.add.audio("dick");
-            this.dick.loop = true;
             this.dick.volume = 0.3;
 
             this.m1 = this.game.add.audio("herreguddritkult")
@@ -123,7 +122,8 @@ var play = {
 
     },
     update: function() {
-        this.player.angle += 1;
+        if(!this.dick.isPlaying ){    this.dick.play();  }
+        this.player.angle += this.spin_direction/500;
         game.input.onDown.add(this.jump, this);
         this.space.onDown.add(this.jump, this);
         if (this.player.inWorld == false) this.restart();
@@ -142,8 +142,6 @@ var play = {
       } else {}
         this.skymirror.x -= this.backgroundSpeed;
 
-        if(!this.dick.isPlaying && this.shouldplaymusic){    this.dick.play();  }
-
     },
     render: function() {
         game.debug.body(this.william)
@@ -155,8 +153,8 @@ var play = {
     },
 
     jump: function() {
-        this.random_spin = this.getRandomInt(1, 2);
         this.random_time = this.getRandomInt(300, 800);
+        this.spin_direction = Math.random() < 0.5 ? -500 : 500;
         //var change_expression = Math.floor(Math.random() * 20);
 
         this.backgroundSpeed += 0.03;
@@ -174,20 +172,14 @@ var play = {
 
         tweenz = this.game.add.tween(this.player);
 
-        if (this.score > 2 && this.score < 10) {
+        if ((this.score > 2 && this.score < 10) || (this.score > 20 && this.score < 40)) {
             tweenz.to({
                 angle: -20
             }, 100);
         } else {
-            if (this.random_spin == 1) {
                 tweenz.to({
-                    angle: -500
+                    angle: this.spin_direction
                 }, 300);
-            } else {
-                tweenz.to({
-                    angle: 500
-                }, 300);
-            }
         }
 
         tweenz.start();
