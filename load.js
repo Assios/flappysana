@@ -22,8 +22,8 @@ var load = {
         game.load.image('sky', 'assets/oslo.png');
         game.load.image('sky2', 'assets/bg2.png');
 
-        game.load.image('william', 'assets/william.png');
-        game.load.image('william2', 'assets/william2.png');
+        game.load.image('yousef', 'assets/yousef.png');
+        game.load.image('yousef2', 'assets/yousef2.png');
 
         game.load.image('menu', 'assets/flappysana.jpg');
         game.load.spritesheet('bird', 'assets/spritesheet.png', 72, 64);
@@ -34,20 +34,14 @@ var load = {
         game.load.audio("iloveyou", "assets/quotes/iloveyou.mp3")
         game.load.audio("javel", "assets/quotes/javel.mp3")
         game.load.audio("russebuss", "assets/quotes/russebuss.mp3")
-        game.load.audio("harderenomat", "assets/quotes/harderenomat.mp3")
         game.load.audio("jeggiropp", "assets/quotes/jeggiropp.mp3")
-        game.load.audio("lagenoaent", "assets/quotes/lagenoaent.mp3")
-        game.load.audio("ikkenoespise", "assets/quotes/ikkenoespise.mp3")
 
         game.load.audio("erduserr", "assets/erduserr.mp3")
         game.load.audio("omg", "assets/omg.mp3")
         game.load.audio("death1", "assets/death1.mp3")
 
         game.load.audio('m2', 'assets/quotes/s2.mp3');
-        game.load.audio('m3', 'assets/quotes/s3.mp3');
         game.load.audio('m4', 'assets/quotes/s4.mp3');
-        game.load.audio('m5', 'assets/quotes/s5.mp3');
-
 
         game.load.audio("dick", "assets/fyfaen.mp3");
 

@@ -23,18 +23,18 @@ var play = {
         //this.nisse.volume = 1.5;
         //this.nisse.play()
         this.space = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-        this.william = game.add.group();
-        this.william.createMultiple(5, 'william');
-        this.william.setAll('checkWorldBounds', true);
-        this.william.setAll('outOfBoundsKill', true);
-        this.william.enableBody = true;
-        this.william.scale.setTo(1.27, 1.27);
-        this.william2 = game.add.group();
-        this.william2.createMultiple(5, 'william2');
-        this.william2.setAll('checkWorldBounds', true);
-        this.william2.setAll('outOfBoundsKill', true);
-        this.william2.enableBody = true;
-        this.william2.scale.setTo(1.27, 1.27);
+        this.yousef2 = game.add.group();
+        this.yousef2.createMultiple(5, 'yousef2');
+        this.yousef2.setAll('checkWorldBounds', true);
+        this.yousef2.setAll('outOfBoundsKill', true);
+        this.yousef2.enableBody = true;
+        this.yousef2.scale.setTo(1.27, 1.27);
+        this.yousef = game.add.group();
+        this.yousef.createMultiple(5, 'yousef');
+        this.yousef.setAll('checkWorldBounds', true);
+        this.yousef.setAll('outOfBoundsKill', true);
+        this.yousef.enableBody = true;
+        this.yousef.scale.setTo(1.27, 1.27);
         game.physics.startSystem(Phaser.Physics.ARCADE);
 
         this.player = this.game.add.sprite(W / 2, H / 2 - 100, 'sana');
@@ -43,44 +43,30 @@ var play = {
         this.player.animations.add('jump1', [1, 0], 4, false);
         this.player.animations.add("start", [0], 1, false);
         game.physics.arcade.enable(this.player);
-        game.physics.arcade.enable(this.william);
-        game.physics.arcade.enable(this.william2);
+        game.physics.arcade.enable(this.yousef2);
+        game.physics.arcade.enable(this.yousef);
         this.player.anchor.setTo(0.5, 0.5);
         this.score = 0;
 
         if (SOUND) {
             this.dick = this.game.add.audio("dick");
-            this.dick.volume = 0.3;
+            this.dick.volume = 0.2;
 
             this.m1 = this.game.add.audio("herreguddritkult")
             this.m2 = this.game.add.audio('m2');
-            this.m3 = this.game.add.audio('m3');
             this.m4 = this.game.add.audio('m4');
-            this.m5 = this.game.add.audio('m5');
             this.m6 = this.game.add.audio("nooraokey")
-            this.m7 = this.game.add.audio("harderenomat");
             this.m8 = this.game.add.audio("iloveyou")
             this.m9 = this.game.add.audio("javel")
-            this.m10 = this.game.add.audio("jeggiropp")
             this.m11 = this.game.add.audio("russebuss")
-            this.m12 = this.game.add.audio("lagenoaent")
-            this.m13 = this.game.add.audio("ikkenoespise")
-
-
 
             this.m1.volume = 1.0;
             this.m2.volume = 1.2;
-            this.m3.volume = 1.0;
             this.m4.volume = 1.2;
-            this.m5.volume = 0.6;
             this.m6.volume = 1.3;
-            this.m7.volume = 1.3;
             this.m8.volume = 1.3;
             this.m9.volume = 1.4;
-            this.m10.volume = 1.4;
             this.m11.volume = 1.4;
-            this.m12.volume = 0.8;
-            this.m13.volume = 1.0;
 
             this.d3 = this.game.add.audio("death1")
             this.d3.volume = 0.5;
@@ -127,8 +113,8 @@ var play = {
         game.input.onDown.add(this.jump, this);
         this.space.onDown.add(this.jump, this);
         if (this.player.inWorld == false) this.restart();
-        game.physics.arcade.collide(this.player, this.william, 0, this.restart, this);
-        game.physics.arcade.collide(this.player, this.william2, 0, this.restart, this);
+        game.physics.arcade.collide(this.player, this.yousef2, 0, this.restart, this);
+        game.physics.arcade.collide(this.player, this.yousef, 0, this.restart, this);
 
       if (this.sky.x < -this.offset) {
         this.sky.x = this.offset;
@@ -144,7 +130,7 @@ var play = {
 
     },
     render: function() {
-        game.debug.body(this.william)
+        game.debug.body(this.yousef2)
     },
 
 
@@ -172,7 +158,7 @@ var play = {
 
         tweenz = this.game.add.tween(this.player);
 
-        if ((this.score > 2 && this.score < 10) || (this.score > 20 && this.score < 40)) {
+        if ((this.score > 2 && this.score < 11) || (this.score > 20 && this.score < 41)) {
             tweenz.to({
                 angle: -20
             }, 100);
@@ -210,8 +196,8 @@ var play = {
 
     },
     add_p: function() {
-        var obstacle = this.william.getFirstDead();
-        var obstacle2 = this.william2.getFirstDead();
+        var obstacle = this.yousef2.getFirstDead();
+        var obstacle2 = this.yousef.getFirstDead();
         obstacle.body.setSize(169, 581, 50, 90);
         obstacle2.body.setSize(169, 581, 50, 40);
         var random = Math.floor(Math.random() * 400) - 200;
@@ -251,20 +237,11 @@ var play = {
             case 2:
                 this.m2.play();
                 break;
-            case 3:
-                this.m3.play();
-                break;
             case 4:
                 this.m4.play();
                 break;
-            case 5:
-                this.m5.play();
-                break;
             case 6:
                 this.m6.play();
-                break;
-            case 7:
-                this.m7.play();
                 break;
             case 8:
                 this.m8.play();
@@ -272,17 +249,8 @@ var play = {
             case 9:
                 this.m9.play();
                 break;
-            case 10:
-                this.m10.play();
-                break;
             case 11:
                 this.m11.play();
-                break;
-            case 12:
-                this.m12.play();
-                break;
-            case 13:
-                this.m13.play();
                 break;
         }
     }
