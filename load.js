@@ -9,7 +9,7 @@ var load = {
         this.scale.maxHeight = 1136;
         this.scale.pageAlignHorizontally = true;
         this.scale.pageAlignVertically = true;
-        this.scale.setScreenSize(true);
+        this.scale.refresh(true);
 
         game.stage.backgroundColor = '#ff0000';
 
@@ -58,7 +58,7 @@ var load = {
         this.scale.maxHeight = 1136;
         this.scale.pageAlignHorizontally = true;
         this.scale.pageAlignVertically = true;
-        this.scale.setScreenSize(true);
+        this.scale.refresh(true);
 
         this.game.state.start('menu');
 	}
