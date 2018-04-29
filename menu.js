@@ -1,7 +1,6 @@
 var menu = {
     preload: function() {
         game.load.spritesheet('playbtn', 'assets/playy.png', 128, 128);
-        game.load.spritesheet('instagram', 'assets/instagram.png', 504, 504);
     },
 
     create: function() {
